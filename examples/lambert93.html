@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leaflet – Géoplateforme : Lambert 93</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="../dist/leaflet-geoplateforme.css">
+    <style>
+        html, body { height: 100%; margin: 0; }
+        #map { height: 100%; }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/proj4@2.9.2/dist/proj4.js"></script>
+<script src="https://unpkg.com/proj4leaflet@1.0.2/src/proj4leaflet.js"></script>
+<script src="../dist/leaflet-geoplateforme.js"></script>
+<script>
+    // Carte en projection Lambert 93 (EPSG:2154) : tuiles WMTS « 2154_10cm » de la Géoplateforme
+    var map = L.map('map', {
+        crs: L.geoplateforme.crs.EPSG2154,
+        center: [48.8566, 2.3522],
+        zoom: 12
+    });
+
+    L.geoplateforme.wmts({ layer: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2.L93' }).addTo(map);
+
+    L.geoplateforme.searchEngine().addTo(map);
+    L.geoplateforme.mousePosition({ systems: ['Lambert93', 'DD'] }).addTo(map);
+</script>
+</body>
+</html>

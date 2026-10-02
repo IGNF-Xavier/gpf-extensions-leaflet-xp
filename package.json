@@ -1,0 +1,38 @@
+{
+  "name": "leaflet-geoplateforme",
+  "version": "0.1.0",
+  "description": "[Expérimental, non officiel] Extension Leaflet pour la Géoplateforme de l'IGN (WMTS, WMS, WFS, catalogue de couches, recherche, itinéraire, isochrone, altimétrie, Panoramax…)",
+  "main": "dist/leaflet-geoplateforme.js",
+  "style": "dist/leaflet-geoplateforme.css",
+  "files": [
+    "dist",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "leaflet",
+    "ign",
+    "geoplateforme",
+    "geoportail",
+    "wmts",
+    "wms",
+    "wfs",
+    "panoramax",
+    "gis",
+    "experimental"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "leaflet": "^1.9.0"
+  },
+  "author": "IGNF-Xavier",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IGNF-Xavier/gpf-extensions-leaflet-xp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IGNF-Xavier/gpf-extensions-leaflet-xp/issues"
+  },
+  "homepage": "https://github.com/IGNF-Xavier/gpf-extensions-leaflet-xp#readme"
+}

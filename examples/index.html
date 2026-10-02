@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leaflet – Géoplateforme : démonstration</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="../dist/leaflet-geoplateforme.css">
+    <style>
+        html, body { height: 100%; margin: 0; }
+        #map { height: 100%; }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../dist/leaflet-geoplateforme.js"></script>
+<script>
+    var map = L.map('map', { center: [46.6, 2.5], zoom: 6 });
+
+    // Couches WMTS / WMS
+    var plan = L.geoplateforme.wmts({ layer: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2' });
+    var ortho = L.geoplateforme.wmts({ layer: 'ORTHOIMAGERY.ORTHOPHOTOS', opacity: 0.9 });
+    var parcelles = L.geoplateforme.wmts({ layer: 'CADASTRALPARCELS.PARCELLAIRE_EXPRESS' });
+    var limites = L.geoplateforme.wms({ layers: 'LIMITES_ADMINISTRATIVES_EXPRESS.LATEST' });
+
+    // Contrôles
+    var switcher = L.geoplateforme.layerSwitcher({
+        layers: [
+            { layer: ortho, config: { title: 'Photographies aériennes', visibility: false } },
+            { layer: plan, config: { title: 'Plan IGN', description: 'Plan IGN issu de la BD TOPO.' } },
+            { layer: parcelles, config: { title: 'Parcelles cadastrales', visibility: false } },
+            { layer: limites, config: { title: 'Limites administratives (WMS)', visibility: false } }
+        ],
+        collapsed: false
+    }).addTo(map);
+
+    // Catalogue : recherche dans l'index de la Géoplateforme, ajout dans le LayerSwitcher
+    L.geoplateforme.layerCatalog({ layerSwitcher: switcher }).addTo(map);
+
+    L.geoplateforme.searchEngine({ advancedSearch: true }).addTo(map);
+    L.geoplateforme.reverseGeocode().addTo(map);
+    L.geoplateforme.route().addTo(map);
+    L.geoplateforme.isocurve().addTo(map);
+    L.geoplateforme.elevationPath().addTo(map);
+    L.geoplateforme.measure().addTo(map);
+    L.geoplateforme.featureInfo().addTo(map);
+
+    // Comparateur : plan / photographies actuelles / photographies de 1950-1965
+    var histo = L.geoplateforme.wmts({ layer: 'ORTHOIMAGERY.ORTHOPHOTOS.1950-1965', title: 'Photographies 1950-1965' });
+    L.geoplateforme.compare({
+        layers: [{ layer: ortho, title: 'Photographies actuelles' }, { layer: histo }, { layer: plan, title: 'Plan IGN' }],
+        left: 1, right: 0
+    }).addTo(map);
+
+    L.geoplateforme.exportMap().addTo(map);
+    L.geoplateforme.panoramax().addTo(map);
+    L.geoplateforme.mousePosition().addTo(map);
+</script>
+</body>
+</html>
