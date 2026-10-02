@@ -1,5 +1,5 @@
 {
-  "name": "leaflet-geoplateforme",
+  "name": "gpf-extensions-leaflet-xp",
   "version": "0.1.0",
   "description": "[Expérimental, non officiel] Extension Leaflet pour la Géoplateforme de l'IGN (WMTS, WMS, WFS, catalogue de couches, recherche, itinéraire, isochrone, altimétrie, Panoramax…)",
   "main": "dist/leaflet-geoplateforme.js",

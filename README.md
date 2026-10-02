@@ -1,4 +1,4 @@
-# leaflet-geoplateforme
+# gpf-extensions-leaflet-xp
 
 > **⚠️ Projet expérimental et non officiel.** Cette extension est en cours de développement (version 0.1.0) : l'API publique peut changer sans préavis, elle n'a été testée que manuellement et aucune garantie n'est donnée. Elle s'appuie sur des services de la Géoplateforme et de Panoramax dont le comportement peut évoluer. À valider avant tout usage en production. Retours et signalements bienvenus dans les [issues](https://github.com/IGNF-Xavier/gpf-extensions-leaflet-xp/issues).
 
